@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Happy Birthday Celestyn </title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Comic Sans MS', cursive, sans-serif; }
+  body {
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #84fab0, #8fd3f4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #4a154b;
+  }
+  @keyframes gradientBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  header {
+    text-align:center;
+    padding: 40px 20px 20px;
+  }
+  header h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: #fff;
+    text-shadow: 3px 3px 0 #ff4f8b, 6px 6px 0 rgba(0,0,0,0.1);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100%{transform: translateY(0)}
+    50%{transform: translateY(-15px)}
+  }
+  header p {
+    font-size: 1.3rem;
+    color:#fff;
+    margin-top:10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+  .container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  .card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    padding: 30px;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    backdrop-filter: blur(10px);
+    border: 3px dashed #ff85c1;
+    transition: transform 0.3s;
+  }
+  .card:hover { transform: translateY(-5px); }
+  .card h2 {
+    color: #d6336c;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-align:center;
+  }
+  /* Cake */
+  .cake-section { text-align:center; }
+  .cake {
+    position: relative;
+    width: 200px;
+    height: 220px;
+    margin: 20px auto;
+  }
+  .plate {
+    position:absolute; bottom:0; left:-30px;
+    width:260px; height:20px;
+    background:#ddd; border-radius:50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .layer {
+    position:absolute; left:0; width:200px;
+    border-radius: 15px;
+  }
+  .layer-bottom { bottom:20px; height:70px; background: linear-gradient(180deg,#ff6fa8,#d6336c); }
+  .layer-middle { bottom:90px; height:55px; width:170px; left:15px; background: linear-gradient(180deg,#ffd166,#f4a261); }
+  .layer-top    { bottom:145px; height:40px; width:140px; left:30px; background: linear-gradient(180deg,#a18cd1,#7b5cb8); }
+  .candle {
+    position:absolute; bottom:185px; left:95px;
+    width:10px; height:30px; background:#fff8e7;
+    border-radius:3px;
+  }
+  .flame {
+    position:absolute; bottom:215px; left:93px;
+    width:14px; height:20px;
+    background: radial-gradient(circle at 50% 70%, #ffeb3b, #ff5722);
+    border-radius: 50% 50% 20% 20%;
+    animation: flicker 0.4s infinite alternate;
+    box-shadow: 0 0 15px #ff9800, 0 0 30px #ffeb3b;
+  }
+  .flame.out { display:none; }
+  @keyframes flicker {
+    from { transform: scale(1) rotate(-2deg); }
+    to   { transform: scale(1.1) rotate(2deg); }
+  }
+  button {
+    background: linear-gradient(135deg,#ff6fa8,#d6336c);
+    color:white; border:none; padding: 12px 25px;
+    font-size: 1rem; border-radius: 30px;
+    cursor:pointer; margin:10px 5px;
+    box-shadow: 0 5px 15px rgba(214,51,108,0.4);
+    transition: transform 0.2s;
+    font-family: inherit;
+  }
+  button:hover { transform: scale(1.05); }
+  button:active { transform: scale(0.95); }
+
+  /* Love letter */
+  .letter {
+    background: linear-gradient(135deg,#fff5f7,#ffe0ec);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 6px solid #ff4f8b;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color:#4a154b;
+    margin-top:15px;
+  }
+  .letter .signature {
+    text-align:right;
+    margin-top:15px;
+    font-size: 1.5rem;
+    color:#d6336c;
+  }
+
+  /* Games */
+  .game-area {
+    text-align:center;
+    margin-top: 15px;
+  }
+  /* Game 1: Heart catcher */
+  #catcherGame {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    background: linear-gradient(180deg, #c2e9fb, #ffd6e8);
+    margin: 15px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid #ff85c1;
+  }
+  #basket {
+    position:absolute; bottom:10px;
+    width:70px; height:50px;
+    background: linear-gradient(135deg,#ff6fa8,#d6336c);
+    border-radius: 0 0 35px 35px;
+    border: 3px solid #fff;
+    transition: left 0.05s linear;
+  }
+  .falling {
+    position:absolute;
+    font-size: 1.8rem;
+    user-select:none;
+  }
+  .score-board {
+    font-size: 1.2rem;
+    color:#d6336c;
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  /* Game 2: Memory */
+  .memory-grid {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 15px auto;
+  }
+  .mem-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg,#a18cd1,#fbc2eb);
+    border-radius: 12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 2rem; cursor:pointer;
+    color: transparent;
+    transition: transform 0.3s;
+    user-select:none;
+    border: 2px solid #fff;
+  }
+  .mem-card.flipped {
+    background: #fff;
+    color: initial;
+    transform: rotateY(180deg);
+  }
+  .mem-card.matched {
+    background: linear-gradient(135deg,#84fab0,#8fd3f4);
+    color: initial;
+    cursor: default;
+  }
+
+  /* Game 3: Quiz */
+  .quiz-question {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color:#4a154b;
+    font-weight:bold;
+  }
+  .quiz-options {
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+  }
+  .quiz-options button {
+    flex: 1 1 40%;
+    min-width: 140px;
+  }
+  .quiz-feedback {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    min-height: 30px;
+    font-weight:bold;
+  }
+
+  /* Game 4: Click hearts */
+  #clickArea {
+    position:relative;
+    width:100%; max-width:500px;
+    height: 300px;
+    background: linear-gradient(135deg,#ffe0ec,#e0c3fc);
+    border-radius:15px;
+    margin: 15px auto;
+    overflow:hidden;
+    border: 3px solid #ff85c1;
+    cursor: crosshair;
+  }
+  .pop-heart {
+    position:absolute;
+    font-size: 2rem;
+    cursor:pointer;
+    user-select:none;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100%{transform: translateY(0)}
+    50%{transform: translateY(-15px)}
+  }
+
+  /* Confetti */
+  .confetti {
+    position: fixed;
+    width: 10px; height: 10px;
+    top: -10px;
+    z-index: 9999;
+    animation: fall linear;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); }
+  }
+
+  /* Floating hearts background */
+  .bg-heart {
+    position: fixed;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: floatUp 10s linear infinite;
+    pointer-events:none;
+    z-index: 0;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(100vh) rotate(0deg); opacity:0; }
+    10%  { opacity: 0.7; }
+    to   { transform: translateY(-100px) rotate(360deg); opacity:0; }
+  }
+
+  footer {
+    text-align:center;
+    padding: 30px 20px;
+    color: #fff;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 500px) {
+    .memory-grid { grid-template-columns: repeat(4, 1fr); }
+    .mem-card { font-size: 1.4rem; }
+    header h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1> Happy Birthday, Celestyn! </h1>
+  <p> Hari ini semua tentangmu, sayang </p>
+</header>
+
+<div class="container">
+
+  <!-- CAKE SECTION -->
+  <div class="card cake-section">
+    <h2> Tiup Lilinnya, Sayang! </h2>
+    <div class="cake">
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="candle"></div>
+      <div class="flame" id="flame"></div>
+    </div>
+    <p>Klik tombol di bawah untuk tiup lilin & make a wish </p>
+    <button onclick="blowCandle()"> Tiup Lilin</button>
+    <button onclick="launchConfetti()"> Confetti!</button>
+  </div>
+
+  <!-- LOVE LETTER -->
+  <div class="card">
+    <h2> Surat Cinta dari N </h2>
+    <div class="letter">
+      Halo cantikku, <strong>Celestyn</strong> <br><br>
+      Selamat ulang tahun, sayangku <br><br>
+      Hari ini bukan cuma hari kelahiranmu — ini hari yang membuat duniaku jauh lebih indah, karena tanpamu, hari-hariku cuma sekedar tanggal di kalender. Kamu adalah alasan aku tersenyum bahkan sebelum bangun pagi <br><br>
+      Celestyn, kamu seperti bintang yang namamu sendiri katakan — bersinar lembut di langit hidupku . Setiap tawa, setiap manjamu, setiap "selamat malam" darimu adalah hadiah yang tidak akan pernah bisa kubeli di mana pun <br><br>
+      Di hari spesialmu ini, aku berdoa semoga setiap mimpimu jadi nyata, semoga kesehatan selalu menjadi sahabatmu, dan semoga aku tetap diberi kesempatan untuk jadi orang yang ada di sampingmu, hari ini, besok, dan selamanya <br><br>
+      Terima kasih sudah lahir ke dunia ini. Terima kasih sudah memilih aku <br><br>
+      <em>I love you to the moon and never back </em>
+      <div class="signature">— Yours forever, <strong>N</strong> </div>
+    </div>
+  </div>
+
+  <!-- GAME 1: HEART CATCHER -->
+  <div class="card">
+    <h2> Game 1: Tangkap Cinta dari N </h2>
+    <p style="text-align:center;">Gerakkan keranjang dengan <strong>panah </strong> atau <strong>sentuh layar</strong>. Tangkap  hindari !</p>
+    <div class="score-board">Skor: <span id="catchScore">0</span> |  Sisa Hati: <span id="lives">3</span></div>
+    <div id="catcherGame">
+      <div id="basket"></div>
+    </div>
+    <div class="game-area">
+      <button onclick="startCatcher()"> Mulai Game</button>
+      <button onclick="stopCatcher()"> Stop</button>
+    </div>
+  </div>
+
+  <!-- GAME 2: MEMORY -->
+  <div class="card">
+    <h2> Game 2: Memory Cinta </h2>
+    <p style="text-align:center;">Cocokkan emoji-emoji manis kita!</p>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <div class="game-area">
+      <div class="score-board">Pasangan ditemukan: <span id="memScore">0</span> / 8</div>
+      <button onclick="initMemory()"> Ulang</button>
+    </div>
+  </div>
+
+  <!-- GAME 3: QUIZ -->
+  <div class="card">
+    <h2> Game 3: Seberapa Kenal Aku? </h2>
+    <div id="quizContainer" class="game-area">
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div class="score-board">Skor: <span id="quizScore">0</span></div>
+    </div>
+  </div>
+
+  <!-- GAME 4: POP HEARTS -->
+  <div class="card">
+    <h2> Game 4: Pop the Love! </h2>
+    <p style="text-align:center;">Klik sebanyak mungkin hati dalam <strong>20 detik</strong>!</p>
+    <div class="score-board">Skor: <span id="popScore">0</span> |  Waktu: <span id="popTime">20</span>s</div>
+    <div id="clickArea"></div>
+    <div class="game-area">
+      <button onclick="startPopGame()"> Mulai!</button>
+    </div>
+  </div>
+
+  <!-- FINAL MESSAGE -->
+  <div class="card" style="text-align:center; background: linear-gradient(135deg,#fff0f5,#e0c3fc);">
+    <h2> Pesan Terakhir </h2>
+    <p style="font-size:1.2rem; line-height:1.8;">
+      Celestyn, kamu adalah hadiah terindah dari Tuhan untukku <br>
+      Selamat ulang tahun, cintaku.<br>
+      Semoga semua kebahagiaan dunia berpihak padamu hari ini dan selamanya 
+    </p>
+    <p style="margin-top:15px; font-size:1.3rem;">— With all my love, <strong>N</strong> </p>
+    <button onclick="finalSurprise()"> Buka Kejutan Terakhir!</button>
+  </div>
+
+</div>
+
+<footer>
+  Made with  by <strong>N</strong> for <strong>Celestyn</strong> 
+</footer>
+
+<script>
+/* ============ FLOATING BG HEARTS ============ */
+const bgEmojis = ['','','','','','','',''];
+function spawnBgHeart(){
+  const h = document.createElement('div');
+  h.className = 'bg-heart';
+  h.textContent = bgEmojis[Math.floor(Math.random()*bgEmojis.length)];
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.animationDuration = (6 + Math.random()*8) + 's';
+  h.style.fontSize = (1 + Math.random()*1.5) + 'rem';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(), 15000);
+}
+setInterval(spawnBgHeart, 800);
+
+/* ============ CAKE ============ */
+function blowCandle(){
+  document.getElementById('flame').classList.add('out');
+  launchConfetti();
+  setTimeout(()=>{
+    alert(' Wish-mu didengar alam semesta, sayang! ');
+  }, 300);
+}
+
+/* ============ CONFETTI ============ */
+function launchConfetti(){
+  const colors = ['#ff6fa8','#ffd166','#a18cd1','#84fab0','#8fd3f4','#ff4f8b'];
+  for(let i=0; i<80; i++){
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration = (2 + Math.random()*3) + 's';
+    c.style.transform = `rotate(${Math.random()*360}deg)`;
+    if(Math.random() > 0.5) c.style.borderRadius = '50%';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 5000);
+  }
+}
+
+/* ============ GAME 1: CATCHER ============ */
+const catcher = document.getElementById('catcherGame');
+const basket = document.getElementById('basket');
+let basketX = 0;
+let catcherRunning = false;
+let catchScore = 0, lives = 3;
+let fallInterval, moveInterval;
+const fallingItems = [];
+
+function setBasket(x){
+  const max = catcher.clientWidth - basket.offsetWidth;
+  basketX = Math.max(0, Math.min(max, x));
+  basket.style.left = basketX + 'px';
+}
+
+// init basket position
+window.addEventListener('load', ()=>{
+  setBasket(catcher.clientWidth/2 - 35);
+});
+
+document.addEventListener('keydown', e=>{
+  if(!catcherRunning) return;
+  if(e.key === 'ArrowLeft') setBasket(basketX - 25);
+  if(e.key === 'ArrowRight') setBasket(basketX + 25);
+});
+
+catcher.addEventListener('touchmove', e=>{
+  if(!catcherRunning) return;
+  const rect = catcher.getBoundingClientRect();
+  const x = e.touches[0].clientX - rect.left - basket.offsetWidth/2;
+  setBasket(x);
+  e.preventDefault();
+}, {passive:false});
+
+catcher.addEventListener('mousemove', e=>{
+  if(!catcherRunning) return;
+  const rect = catcher.getBoundingClientRect();
+  const x = e.clientX - rect.left - basket.offsetWidth/2;
+  setBasket(x);
+});
+
+function spawnItem(){
+  const item = document.createElement('div');
+  item.className = 'falling';
+  const isHeart = Math.random() > 0.25;
+  item.textContent = isHeart ? ['','','','',''][Math.floor(Math.random()*5)] : '';
+  item.dataset.type = isHeart ? 'good' : 'bad';
+  item.style.left = Math.random() * (catcher.clientWidth - 30) + 'px';
+  item.style.top = '-30px';
+  item.dataset.y = -30;
+  item.dataset.speed = 2 + Math.random()*3;
+  catcher.appendChild(item);
+  fallingItems.push(item);
+}
+
+function updateFalling(){
+  for(let i = fallingItems.length-1; i>=0; i--){
+    const item = fallingItems[i];
+    let y = parseFloat(item.dataset.y) + parseFloat(item.dataset.speed);
+    item.dataset.y = y;
+    item.style.top = y + 'px';
+    
+    const itemLeft = parseFloat(item.style.left);
+    const basketTop = catcher.clientHeight - 60;
+    
+    // Collision with basket
+    if(y + 25 >= basketTop && y <= basketTop + 50){
+      if(itemLeft + 25 >= basketX && itemLeft <= basketX + 70){
+        if(item.dataset.type === 'good'){
+          catchScore++;
+          document.getElementById('catchScore').textContent = catchScore;
+        } else {
+          lives--;
+          document.getElementById('lives').textContent = lives;
+          if(lives <= 0){
+            stopCatcher();
+            alert(` Game Over! Skor akhir: ${catchScore} \nTapi cintaku padamu tetap unlimited `);
+            return;
+          }
+        }
+        item.remove();
+        fallingItems.splice(i,1);
+        continue;
+      }
+    }
+    
+    if(y > catcher.clientHeight){
+      item.remove();
+      fallingItems.splice(i,1);
+    }
+  }
+}
+
+function startCatcher(){
+  if(catcherRunning) return;
+  catcherRunning = true;
+  catchScore = 0; lives = 3;
+  document.getElementById('catchScore').textContent = 0;
+  document.getElementById('lives').textContent = 3;
+  fallingItems.forEach(i=>i.remove());
+  fallingItems.length = 0;
+  fallInterval = setInterval(spawnItem, 900);
+  moveInterval = setInterval(updateFalling, 30);
+}
+
+function stopCatcher(){
+  catcherRunning = false;
+  clearInterval(fallInterval);
+  clearInterval(moveInterval);
+}
+
+/* ============ GAME 2: MEMORY ============ */
+const memEmojis = ['','','','','','','',''];
+let flippedCards = [];
+let matchedCount = 0;
+let lockBoard = false;
+
+function initMemory(){
+  const grid = document.getElementById('memoryGrid');
+  grid.innerHTML = '';
+  matchedCount = 0;
+  flippedCards = [];
+  lockBoard = false;
+  document.getElementById('memScore').textContent = 0;
+  
+  const cards = [...memEmojis, ...memEmojis].sort(()=>Math.random()-0.5);
+  cards.forEach((emoji, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'mem-card';
+    card.dataset.emoji = emoji;
+    card.dataset.index = idx;
+    card.textContent = emoji;
+    card.addEventListener('click', ()=>flipCard(card));
+    grid.appendChild(card);
+  });
+}
+
+function flipCard(card){
+  if(lockBoard) return;
+  if(card.classList.contains('flipped') || card.classList.contains('matched')) return;
+  
+  card.classList.add('flipped');
+  flippedCards.push(card);
+  
+  if(flippedCards.length === 2){
+    lockBoard = true;
+    const [a, b] = flippedCards;
+    if(a.dataset.emoji === b.dataset.emoji){
+      setTimeout(()=>{
+        a.classList.add('matched');
+        b.classList.add('matched');
+        flippedCards = [];
+        matchedCount++;
+        document.getElementById('memScore').textContent = matchedCount;
+        lockBoard = false;
+        if(matchedCount === 8){
+          launchConfetti();
+          setTimeout(()=>alert(' Sempurna! Sama seperti hubungan kita '), 400);
+        }
+      }, 400);
+    } else {
+      setTimeout(()=>{
+        a.classList.remove('flipped');
+        b.classList.remove('flipped');
+        flippedCards = [];
+        lockBoard = false;
+      }, 900);
+    }
+  }
+}
+initMemory();
+
+/* ============ GAME 3: QUIZ ============ */
+const quizData = [
+  {
+    q: "Siapa orang yang paling sayang sama Celestyn? ",
+    options: ["N", "Mantan kamu ", "Tetangga", "Tukang bakso"],
+    answer: 0,
+    correct: "Yesss! N selalu nomor satu untukmu ",
+    wrong: "Salah dong! Jelas N, sayang "
+  },
+  {
+    q: "Apa kata pertama N saat melihatmu? ",
+    options: ["Hai", "Wow, cantiknya ", "Permisi", "Maaf"],
+    answer: 1,
+    correct: "Bener! Kamu memang bikin speechless ",
+    wrong: "Hihi, jelas 'Wow cantiknya' dong "
+  },
+  {
+    q: "Berapa lama N mau bersamamu? ",
+    options: ["1 tahun", "10 tahun", "Selamanya", "Sampai bosan"],
+    answer: 2,
+    correct: "Yess! Forever and always ",
+    wrong: "Salah! Jawabannya 'Selamanya' "
+  },
+  {
+    q: "Apa hadiah terbaik untuk Celestyn? ",
+    options: ["Coklat", "Bunga", "Cinta tulus N", "Uang"],
+    answer: 2,
+    correct: "Tepat! Cinta yang tak bisa dibeli ",
+    wrong: "Hayoo, jawabannya cinta tulus N "
+  },
+  {
+    q: "Kapan N berhenti mencintaimu? ",
+    options: ["Besok", "Tahun depan", "Nanti", "Tidak akan pernah"],
+    answer: 3,
+    correct: "BENAR! Never ever ever ",
+    wrong: "Salah besar! Tidak akan pernah, sayang "
+  }
+];
+let quizIdx = 0, quizScore = 0;
+
+function loadQuiz(){
+  if(quizIdx >= quizData.length){
+    document.getElementById('quizContainer').innerHTML = `
+      <div class="quiz-question"> Selesai! Skor akhir: ${quizScore}/${quizData.length}</div>
+      <p style="font-size:1.1rem; margin:15px 0;">Kamu memang yang paling mengenal hatiku </p>
+      <button onclick="resetQuiz()"> Main Lagi</button>
+    `;
+    launchConfetti();
+    return;
+  }
+  const q = quizData[quizIdx];
+  document.getElementById('quizQuestion').textContent = `(${quizIdx+1}/${quizData.length}) ${q.q}`;
+  const opts = document.getElementById('quizOptions');
+  opts.innerHTML = '';
+  document.getElementById('quizFeedback').textContent = '';
+  q.options.forEach((opt, i)=>{
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.onclick = ()=>answerQuiz(i);
+    opts.appendChild(btn);
+  });
+}
+
+function answerQuiz(i){
+  const q = quizData[quizIdx];
+  const fb = document.getElementById('quizFeedback');
+  if(i === q.answer){
+    quizScore++;
+    document.getElementById('quizScore').textContent = quizScore;
+    fb.textContent = q.correct;
+    fb.style.color = '#2d8659';
+  } else {
+    fb.textContent = q.wrong;
+    fb.style.color = '#d6336c';
+  }
+  setTimeout(()=>{
+    quizIdx++;
+    loadQuiz();
+  }, 1500);
+}
+
+function resetQuiz(){
+  quizIdx = 0; quizScore = 0;
+  document.getElementById('quizContainer').innerHTML = `
+    <div class="quiz-question" id="quizQuestion"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="score-board">Skor: <span id="quizScore">0</span></div>
+  `;
+  loadQuiz();
+}
+loadQuiz();
+
+/* ============ GAME 4: POP HEARTS ============ */
+const clickArea = document.getElementById('clickArea');
+let popScore = 0, popTimer = 20, popRunning = false;
+let popInterval, popSpawn;
+
+function startPopGame(){
+  if(popRunning) return;
+  popRunning = true;
+  popScore = 0; popTimer = 20;
+  document.getElementById('popScore').textContent = 0;
+  document.getElementById('popTime').textContent = popTimer;
+  clickArea.innerHTML = '';
+  
+  popSpawn = setInterval(spawnPopHeart, 600);
+  popInterval = setInterval(()=>{
+    popTimer--;
+    document.getElementById('popTime').textContent = popTimer;
+    if(popTimer <= 0){
+      clearInterval(popInterval);
+      clearInterval(popSpawn);
+      popRunning = false;
+      let msg = '';
+      if(popScore >= 20) msg = ' Wow! Pecinta sejati! Cintamu meledak-ledak ';
+      else if(popScore >= 10) msg = ' Bagus! Sayangmu manis sekali ';
+      else msg = ' Tetap saja kamu yang terbaik untukku ';
+      setTimeout(()=>alert(` Waktu habis!\nSkor: ${popScore} \n${msg}`), 200);
+    }
+  }, 1000);
+}
+
+function spawnPopHeart(){
+  const h = document.createElement('div');
+  h.className = 'pop-heart';
+  h.textContent = ['','','','','',''][Math.floor(Math.random()*6)];
+  h.style.left = Math.random() * (clickArea.clientWidth - 40) + 'px';
+  h.style.top = Math.random() * (clickArea.clientHeight - 40) + 'px';
+  h.style.animationDelay = Math.random() + 's';
+  h.onclick = ()=>{
+    popScore++;
+    document.getElementById('popScore').textContent = popScore;
+    h.remove();
+  };
+  clickArea.appendChild(h);
+  setTimeout(()=>{ if(h.parentNode) h.remove(); }, 2500);
+}
+
+/* ============ FINAL SURPRISE ============ */
+function finalSurprise(){
+  launchConfetti();
+  setTimeout(launchConfetti, 500);
+  setTimeout(launchConfetti, 1000);
+  setTimeout(()=>{
+    alert(' Celestyn, kamu adalah satu-satunya yang akan selalu ada di hatiku \n\nSelamat ulang tahun, cinta sehidup sematiku \n\n— N ');
+  }, 300);
+}
+</script>
+
+</body>
+</html>
